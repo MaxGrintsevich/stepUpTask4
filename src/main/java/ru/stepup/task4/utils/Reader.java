@@ -1,18 +1,20 @@
-package ru.stepup.task4;
+package ru.stepup.task4.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.stepup.task4.interfaces.DataReadable;
+import ru.stepup.task4.model.Data;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+
 
 @Component
-public class Reader implements Supplier<List<Data>> {
-    @Autowired
+public class Reader implements DataReadable {
+    @Value("${folder.path}")
     private String path;
 
     private boolean folderExists(){
@@ -52,9 +54,9 @@ public class Reader implements Supplier<List<Data>> {
         return list;
     }
 
-    @Override
-    public List<Data> get() {
 
+    @Override
+    public List<Data> read() {
         List<File> fileList = getFileList();
 
         List<String> lines = new ArrayList<>();
@@ -63,6 +65,5 @@ public class Reader implements Supplier<List<Data>> {
         List<Data> dataList = new ArrayList<>();
         lines.forEach(line->dataList.add(new Data(line)));
 
-        return dataList;
-    }
+        return dataList;    }
 }

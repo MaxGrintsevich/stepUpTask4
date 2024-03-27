@@ -1,10 +1,11 @@
-package ru.stepup.task4;
+package ru.stepup.task4.utils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import ru.stepup.task4.annotations.LogTransformation;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class Logger {
         return param;
     }
 
-    @Around("@annotation(LogTransformation)")
+    @Around("@annotation(ru.stepup.task4.annotations.LogTransformation)")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
 
         String fileName = getAnnotationParam(joinPoint);

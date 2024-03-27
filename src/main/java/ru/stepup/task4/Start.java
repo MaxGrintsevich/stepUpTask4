@@ -3,6 +3,7 @@ package ru.stepup.task4;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import ru.stepup.task4.service.App;
 
 @SpringBootApplication(scanBasePackages = "ru.stepup.task4")
 public class Start {
