@@ -29,4 +29,27 @@ public class App {
         writer.write(correctList);
     }
 
+    public DataReadable getReader() {
+        return reader;
+    }
+
+    public List<DataTransformable> getOperations() {
+        return operations;
+    }
+
+    public DataWritable getWriter() {
+        return writer;
+    }
+
+    public void setReader(DataReadable reader) {
+        this.reader = reader;
+    }
+
+    public void setOperations(List<DataTransformable> operations) {
+        this.operations = operations;
+    }
+
+    public void setWriter(DataWritable writer) {
+        this.writer = writer;
+    }
 }

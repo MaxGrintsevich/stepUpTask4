@@ -3,6 +3,7 @@ package ru.stepup.task4.model;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 
 public class Data {
@@ -98,5 +99,18 @@ public class Data {
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Data)) return false;
+        Data data = (Data) o;
+        return Objects.equals(getLogin(), data.getLogin()) && Objects.equals(getLastname(), data.getLastname()) && Objects.equals(getFirstname(), data.getFirstname()) && Objects.equals(getSecondName(), data.getSecondName()) && Objects.equals(getDate(), data.getDate()) && Objects.equals(getAppType(), data.getAppType()) && Objects.equals(getError(), data.getError());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLogin(), getLastname(), getFirstname(), getSecondName(), getDate(), getAppType(), getError());
     }
 }
